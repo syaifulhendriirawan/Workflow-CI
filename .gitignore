@@ -1,0 +1,5 @@
+mlruns/
+mlartifacts/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
