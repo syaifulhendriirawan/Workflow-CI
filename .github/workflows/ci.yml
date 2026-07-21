@@ -36,7 +36,13 @@ jobs:
           RUN_ID=$(python -c "import mlflow; print(mlflow.search_runs().loc[0, 'run_id'])")
           echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
 
+      - name: Upload Trained Model Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model-artifact
+          path: mlruns/
+
       - name: Build and Push Docker Image
         run: |
-          mlflow models build-docker -m "runs:/${{ env.RUN_ID }}/model" -n "shi31/iris-predictor:latest" --env-manager local
-          docker push shi31/iris-predictor:latest
+          mlflow models build-docker -m "runs:/${{ env.RUN_ID }}/model" -n "shi31/diabetes-model:latest" --env-manager local
+          docker push shi31/diabetes-model:latest

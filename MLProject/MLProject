@@ -1,4 +1,4 @@
-name: IrisClassifierProject
+name: Diabetes_Model_CI
 
 conda_env: conda.yaml
 
